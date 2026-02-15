@@ -1,5 +1,7 @@
 use std::collections::HashMap;
 
+pub type QObject = HashMap<String, QType>;
+
 #[derive(Clone, Debug)]
 pub enum QType {
     Int(i64),
@@ -9,9 +11,9 @@ pub enum QType {
     Void,
     Err,
     List(Vec<QType>),
-    Obj(HashMap<String, QType>),
+    Obj(QObject),
     Thread(Option<usize>),
-    Func(HashMap<String, QType>, ()),
+    Func(QObject, ()),
 }
 
 impl QType {
